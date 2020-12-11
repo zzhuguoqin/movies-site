@@ -1,0 +1,27 @@
+<%- include('../layout/_header.ejs'); -%>
+  <!-- 缩略图存放所有影片start -->
+  <div class="container">
+    <h2 class="page-header">电影推荐</h2>
+    <div class="row">
+      <% if(list.length > 0){ %>
+        <% for(let j=0;j<list.length;j++){ %>
+        <a href="/practices/<%= list[j].id %>.html" class="col-sm-3" style="text-decoration: none;">
+          <div class="thumbnail">
+            <img src="holder.js/200px160?bg=#89c" alt="...">
+            <div class="caption">
+              <h4><%= list[j].name %></h4>
+              <% for(let i=0;i<3;i++){ %>
+              <span class="label label-primary"><%= list[j].tags[i] %></span>
+              <% } %>
+            </div>
+          </div>
+        </a>
+        <% } %>
+      <% } %>
+      <% if(list.length == 0){ %> 
+        <h4 class="col-xs-4 col-xs-offset-5" style="margin-top: 150px;">暂无相关内容</h4>
+      <% } %>
+    </div>
+  </div>
+  <!-- 缩略图存放所有影片end -->
+  <%- include('../layout/_footer'); -%>
