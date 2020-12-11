@@ -10,7 +10,7 @@
   <script src="https://cdn.bootcss.com/holder/2.9.6/holder.min.js"></script>
 </head>
 <body>
-  <!--导航条start  -->
+  <!-- 导航 -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -54,42 +54,22 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-  <!-- 导航条end -->
-  <!-- 视频主页 start-->
-  <div class="container" style="margin-bottom: 50px;">
+  <!-- 缩略图 -->
+  <div class="container" style="margin-top:150px;text-align:center;">
     <div class="row">
-      <div class="col-lg-9">
-        <video controls width="100%" src="<%= result.path %>" id="<%= result.id %>"></video>
-        <h3><%= result.name%></h3>
-        <% for(let i=0;i < result.tags.length;i++){ %>
-          <span class="label label-warning"><%= result.tags[i] %></span>
-        <% } %>
-        <p style="padding-top: 10px;">上映地区：北京</p>
-        <p>上映地区：2020-13-35</p>
-        <p style="text-indent:2em" ><%= result.intro%></p>
-      </div>
-      <div class="col-lg-3">
-       <div class="row">
-        <div class="list-group">
-          <a href="#" class="list-group-item active">
-            时代少年团精彩集锦
-          </a>   
-          <% for(let j=0;j < 5;j++){ %>
-            <a href="/practices/<%= list[j].id %>.html" class="list-group-item"> 
-              <video src="<%= list[j].path %>"  alt="" width="60%"></video>
-              <span><%= list[j].name %></span>
-            </a>
-          <% } %>  
-          <div class="cl-xs-8 col-xs-offset-2">
-            <a href="/practices/movie/creat"><button type="button" class="btn btn-warning" style="margin-top: 40px">添加我喜爱的影片信息</button>   
-            </a>
-          </div>
-       </div>
+      <div class="col-xs-4 col-xs-offset-4" style="border: 1px solid #000;height: 250px;">
+        <p>&nbsp</p>
+        <p> &nbsp</p>
+        <h3>
+           请问您要继续添加影片吗? 
+        </h3>
+        <p> &nbsp</p>
+        <p> &nbsp</p>
+        <p><a href="/movies/creat" class="btn btn-primary" role="button">继续添加</a>&nbsp&nbsp&nbsp&nbsp
+           <a href="'/practices/1.html'" class="btn btn-default" role="button">返回首页</a>
+        </p>
       </div>
     </div>
   </div>
-    <!-- 视频主页end -->
-
-  
 </body>
 </html>

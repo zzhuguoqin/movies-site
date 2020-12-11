@@ -55,41 +55,56 @@
     </div><!-- /.container-fluid -->
   </nav>
   <!-- 导航条end -->
-  <!-- 视频主页 start-->
-  <div class="container" style="margin-bottom: 50px;">
-    <div class="row">
-      <div class="col-lg-9">
-        <video controls width="100%" src="<%= result.path %>" id="<%= result.id %>"></video>
-        <h3><%= result.name%></h3>
-        <% for(let i=0;i < result.tags.length;i++){ %>
-          <span class="label label-warning"><%= result.tags[i] %></span>
-        <% } %>
-        <p style="padding-top: 10px;">上映地区：北京</p>
-        <p>上映地区：2020-13-35</p>
-        <p style="text-indent:2em" ><%= result.intro%></p>
+
+<!-- 警告框start -->
+<div class="container" style="margin-bottom: 0;">
+  <div class="row">
+    <div class="col-xs-6 cl col-xs-offset-3">
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>注意!</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp影片的名字信息不能为空或已存在
       </div>
-      <div class="col-lg-3">
-       <div class="row">
-        <div class="list-group">
-          <a href="#" class="list-group-item active">
-            时代少年团精彩集锦
-          </a>   
-          <% for(let j=0;j < 5;j++){ %>
-            <a href="/practices/<%= list[j].id %>.html" class="list-group-item"> 
-              <video src="<%= list[j].path %>"  alt="" width="60%"></video>
-              <span><%= list[j].name %></span>
-            </a>
-          <% } %>  
-          <div class="cl-xs-8 col-xs-offset-2">
-            <a href="/practices/movie/creat"><button type="button" class="btn btn-warning" style="margin-top: 40px">添加我喜爱的影片信息</button>   
-            </a>
+      </div>
+  </div>
+</div>
+<!-- 警告框ends -->
+
+  <!-- 表单 start-->
+  <div class="container" style="padding-top: 0;">
+    <div class="row">
+      <div class="col-xs-6 cl col-xs-offset-3">
+        <h2 class="page-header">电影推荐</h2>
+        <form action="http://127.0.0.1:80/movie/creat" method="POST" style="margin-bottom: 120px;">
+          <div class="form-group">
+            <label for="text">影片名字</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="影片名字">
           </div>
-       </div>
+          <div class="form-group">
+            <label for="text">影片路径</label>
+            <input type="text" class="form-control" id="path" name="path" placeholder="影片路径">
+          </div>
+          <div class="form-group">
+            <label for="text">上映地区</label>
+            <input type="text" class="form-control" id="pos" name="pos" placeholder="上映地区">
+          </div>
+          <div class="form-group">
+            <label for="text">影片类型</label>
+            <input type="text" class="form-control" id="type" name="type" placeholder="影片类型">
+          </div>
+          <div class="form-group">
+            <label for="text">影片标签</label>
+            <input type="text" class="form-control" id="tags" name="tags" placeholder="请将标签与标签间用,隔开">
+          </div>
+          <div class="form-group">
+            <label for="text">影片简介</label>
+            <textarea class="form-control" rows="3" name="intro" placeholder="影片简介"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-control">添加影片</button>
+        </form>
       </div>
     </div>
   </div>
-    <!-- 视频主页end -->
-
+  <!-- 表单 end-->
   
 </body>
 </html>

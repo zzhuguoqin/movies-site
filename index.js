@@ -38,9 +38,9 @@ app.post('/movie/creat',(request,response)=>{
     request.body.id = ++data.total;
     data.movies.push(request.body);
     fs.writeFileSync('./data.json',JSON.stringify(data));
-    response.send('添加成功')
+    response.render('movie/true')
   }else(
-    response.send('请添加正确的影片信息') 
+    response.render('movie/err') 
   )
 })
 
