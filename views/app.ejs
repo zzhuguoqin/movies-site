@@ -19,13 +19,13 @@
             时代少年团精彩集锦
           </a>   
           <% for(let j=0;j < 5;j++){ %>
-            <a href="/practices/<%= list[j].id %>.html" class="list-group-item"> 
+            <a href="/movies/<%= list[j].id %>.html" class="list-group-item"> 
               <video src="<%= list[j].path %>"  alt="" width="60%"></video>
               <span><%= list[j].name %></span>
             </a>
           <% } %>  
           <div class="cl-xs-8 col-xs-offset-2">
-            <a href="/practices/movie/creat"><button type="button" class="btn btn-warning" style="margin-top: 40px">添加我喜爱的影片信息</button>   
+            <a href="/movies/movie/creat"><button type="button" class="btn btn-warning" style="margin-top: 40px">添加我喜爱的影片信息</button>   
             </a>
           </div>
        </div>
@@ -33,4 +33,4 @@
     </div>
   </div>
     <!-- 视频主页end -->
-    <%- include('./layout/_footer.ejs'); -%>
+<%- include('./layout/_footer.ejs'); -%>

@@ -5,9 +5,9 @@
     <div class="row">
       <% if(list.length > 0){ %>
         <% for(let j=0;j<list.length;j++){ %>
-        <a href="/practices/<%= list[j].id %>.html" class="col-sm-3" style="text-decoration: none;">
+        <a href="/movies/<%= list[j].id %>.html" class="col-sm-3" style="text-decoration: none;">
           <div class="thumbnail">
-            <img src="holder.js/200px160?bg=#89c" alt="...">
+            <img src="holder.js/200px160?bg=#89c&text=<%= list[j].name%>" alt="...">
             <div class="caption">
               <h4><%= list[j].name %></h4>
               <% for(let i=0;i<3;i++){ %>

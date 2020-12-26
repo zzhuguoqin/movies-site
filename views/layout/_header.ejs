@@ -31,7 +31,11 @@
           <li><a href="/movie/list">全部影片</a></li>
           <%let litteT = [...types].slice(0,6)%>
           <% for(let i=0;i < litteT.length; i++){%>
-          <li><a href="/movie/list?type=<%= litteT[i] %>"><%= litteT[i]%></a></li>
+            <% if(litteT[i] == request.query.type){%>
+              <li class="active"><a href="/movie/list?type=<%= litteT[i] %>"><%= litteT[i]%></a></li>
+            <% } else { %>
+              <li><a href="/movie/list?type=<%= litteT[i] %>"><%= litteT[i]%></a></li>
+            <% } %> 
           <% } %>
         </ul>
         <!-- 搜索框 -->
@@ -43,16 +47,24 @@
         </form>
         <!-- 搜索框 -->
         <ul class="nav navbar-nav navbar-right nav-pills" role="tablist">
-          <li role="presentation" class="active"><a href="#">99时代 <span class="badge">42</span></a></li>
+          <% if(request.query.uid == 1){%>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false">个人中心 <span class="caret"></span></a>
+              aria-expanded="false"><%= request.query.name%><span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">我的收藏</a></li>
               <li><a href="#">我的浏览</a></li>
               <li><a href="#">我的点赞</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#">退出登录</a></li>
+              <li><a href="/logout">退出登录</a></li>
+          <% } else {%>
+            <li class="dropdown">
+              <a href="/register" role="button" aria-haspopup="true" >注册</a>
+          </li>
+          <li class="dropdown">
+            <a href="/login" role="button" aria-haspopup="true" >登录</a>
+        </li>
+          <% } %>      
             </ul>
           </li>
         </ul>

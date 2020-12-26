@@ -1,0 +1,27 @@
+<%- include('../layout/_header.ejs'); -%>
+ <!-- 登录界面start -->
+ <p>&nbsp</p>
+ <p>&nbsp</p>
+ <p>&nbsp</p>
+ <div class="container">
+   <div class="row">
+    <form method="POST" action="/register">
+     <div class="col-xs-4 col-xs-offset-4" style="border: 1px solid #ccc;">
+     <h2 class="page-header">注册 </h2>
+     <div class="form-group" >
+       <label for="text">邮箱</label>
+       <input type="text" class="form-control" id="name" name="name" placeholder="e-mail">
+     </div>
+     </br>
+     <div class="form-group">
+       <label for="text">密码</label>
+       <input type="text" class="form-control" id="password" name="password" placeholder="passWord">
+     </div>
+     </br>
+     <button type="submit" class="btn btn-primary form-control" style="margin-bottom: 30px;">注册</button>
+   </div>
+  </form> 
+ </div>
+ </div>
+ <!-- 登录界面end -->
+<%- include('../layout/_footer.ejs'); -%>
