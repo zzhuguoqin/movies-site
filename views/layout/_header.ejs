@@ -47,7 +47,7 @@
         </form>
         <!-- 搜索框 -->
         <ul class="nav navbar-nav navbar-right nav-pills" role="tablist">
-          <% if(request.query.uid == 1){%>
+            <% if(request.session && request.session.uid && request.session.email){   %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
               aria-expanded="false"><%= request.query.name%><span class="caret"></span></a>

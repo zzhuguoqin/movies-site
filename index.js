@@ -22,16 +22,21 @@ app.use(session({
   saveUninitialized:false
 }))
 
+
+
+//判断用户是否登录
+
+
 // 1.视频首页的路由
 app.get('/movies/:id.html',(request,response) =>{
   const types = getTypes();
   let id = request.params.id;
-  let result = movieInfo(id); 
+  let result = movieInfo(id);
   response.render('app',{result,list:data.movies,request,types});
 })
 
 // 2.响应表单页面
-app.get('/movies/movie/creat',(request,response)=>{
+app.get('/movie/creat',(request,response)=>{
   const types = getTypes();
   response.render('movie/creat',{request,types});
 })
@@ -54,31 +59,12 @@ app.post('/movie/creat',(request,response)=>{
     response.render('movie/err',{request,types}) 
   )
 })
-
-// 4.查看所有影片
-app.get('/movie/list',(request,response)=>{
-  // 获取类型
-  let list = data.movies;
+//4. 添加影片成功
+app.post('/movies/success',(request,response)=>{
   const types = getTypes();
-  // 导航条的跳转
-  let type = request.query.type;
-  if(type){
-    list = list.filter(item =>{
-      return type === item.type;
-    })
-  }
-  //  模糊匹配影片
-  let keyWord = request.query.keyword; 
-  if(keyWord){
-    list = list.filter(item =>{
-      return item.name.indexOf(keyWord)!= (-1);
-    })
-  }
- // let keyWord = request.query.
-  response.render('movie/list',{list,types,request})
+  response.render('movie/true')
 })
-
-// 5.注册账号
+// 6.注册账号
 app.get('/register',(request,response)=>{
   const types = getTypes();
   response.render('tool/register',{types,request})
@@ -94,13 +80,17 @@ app.post('/register',(request,response)=>{
       return;
     }
     response.redirect(`/movies/1.html?uid=1&name=${request.body.name}`)
+   let id = request.params.id;
+   let result = movieInfo(id); 
+   response.render('app',{result,list:data.movies,request,types});
+
   })
 
 })
-
 // 登录页面
 app.get('/login',(request,response)=>{
   const types = getTypes();
+
   response.render('tool/login',{types,request})
 })
 app.post('/login',(request,response)=>{
@@ -120,8 +110,13 @@ app.post('/login',(request,response)=>{
   if(is_success){
     request.session.email = userInfo.email;
     request.session.uid = uid;
+
+    //1.去数据库更登录状态 isLogin = true;
+    //
+    response.cookie('isLogin',true)
+
     response.redirect(`/movies/1.html?uid=1&name=${userInfo.name}`)
-    // response.render('app',{types,request,msg:'账号或密码不正确,请重新登录!'})
+    // response.render('app',{types,request})
   }else{
     response.render('info/success',{types,request,msg:'账号或密码不正确,请重新登录!'})
   }
